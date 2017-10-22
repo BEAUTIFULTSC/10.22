@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //需求：
+    //1 对以下数组中出现过的元素值进行去重
+    //2 通过每种元素出现的次数
+    
+    /* //具体实现：
+     var arr = [1, 2, 2, 1, 1, 1, 3, 1, 4, 2, 3, 3, 2, 1, 2, 2, 1, 1, 2, 3, 4, 2, 3];
+     
+     //1 数组去重
+     var resultArr = [];
+     for (var i = 0; i < arr.length; i++) {
+     if (resultArr.indexOf(arr[i]) === -1) {
+     //放入
+     //对于数组的放入操作来说，如果只有一个元素，通常推荐使用旧方式
+     resultArr.push(arr[i]);
+     //resultArr[resultArr.length] = arr[i];
+     }
+     }
+     
+     //2 统计resultArr中每个元素出现的次数
+     console.log(resultArr);//[1,2,3,4];
+     
+     var countArr = [];//用于保存resultArr中每个元素出现的次数
+     var count;
+     var j;
+     
+     for (i = 0; i < resultArr.length; i++) {
+     //取出每一个出现的数据，回到arr原数组中进行比較计数
+     count = 0;//针对resultArr[i],count会重置
+     for (j = 0; j < arr.length; j++) {
+     if (arr[j] == resultArr[i]) {
+     count++;
+     }
+     }
+     //当resultArr[i]计数完毕后，保存到countArr中
+     countArr.push(count);
+     }
+     
+     console.log(countArr);*/
+    
+    
+    //新方式：
+    
+    //相当于装满了货物的卡车
+    var arr = ["a", "a", "b", "a", "c", 1, 3, 1, 4, 2, 3, 3, 2, 1, 2, 2, 1, 1, 2, 3, 4, 2, 3];
+    
+    //obj相当于货物单：现在是空的
+    var obj = {};
+    
+    //1 每一次小哥会将一个货物送到仓库中
+    //我需要检查当前货物单上是否有这个货物。如果有，让计数+1，如果没有，创建一个，设置值为1
+    for (var i = 0; i < arr.length; i++) {
+      //2 arr[i]就是每一个货物;（保存的目的是为了方便使用，不是必须的代码）
+      var val = arr[i];
+      
+      //3 检测仓库obj中是否已经存在val这个货物(检测这个属性是否有值)
+      if (obj[val]) {
+        //说明已经有这个货物了，设置计数+1
+        obj[val]++;//obj[val] += 1;
+      } else {
+        //如果进入了else，说明obj[val]的值为undefined
+        //说明没有这个货物，设置值为1(每个数据第一次出现时一定会先进入到else中进行初始值设置)
+        obj[val] = 1;//设置属性的初始值
+      }
+    }
+    console.log(obj);
+  
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>
